@@ -42,6 +42,8 @@ export default {
       md: "1060px",
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 

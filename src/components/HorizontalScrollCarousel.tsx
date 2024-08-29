@@ -6,31 +6,33 @@ import customer2 from "../assets/customer2.jpg";
 import customer3 from "../assets/customer3.jpg";
 import customer4 from "../assets/customer4.jpg";
 import customer5 from "../assets/customer5.jpg";
+import cutomer6 from "../assets/customer6.png";
+import cutomer7 from "../assets/customer7.png";
 const cards = [
     {
-      name: 'Emma Dorsey',
-      role: 'Senior Developer',
+      name: 'Emily Thompson',
+      role: 'Graphic Designer',
       imageUrl: customer1,
       comment: 'Praesentium iure error aliquam voluptas ut libero. Commodi placeat sit iure nulla officiis. Ut ex sit repellat tempora. Qui est accusamus exercitationem natus ut voluptas. Officiis velit eos ducimus.',
       id: 1,
     },
     {
-      name: 'John Doe',
-      role: 'Designer',
+      name: 'Sophia Ramirez',
+      role: 'Personal Trainer',
       imageUrl: customer2,
       comment: 'Praesentium iure error aliquam voluptas ut libero. Commodi placeat sit iure nulla officiis. Ut ex sit repellat tempora. Qui est accusamus exercitationem natus ut voluptas. Officiis velit eos ducimus.',
       id: 2,
     },
     {
-      name: 'Jane Doe',
-      role: 'Developer',
+      name: 'Ava Johnson',
+      role: 'Architect',
       imageUrl: customer3,
       comment: 'Praesentium iure error aliquam voluptas ut libero. Commodi placeat sit iure nulla officiis. Ut ex sit repellat tempora. Qui est accusamus exercitationem natus ut voluptas. Officiis velit eos ducimus.',
       id: 3,
     },
     {
-      name: 'John Smith',
-      role: 'Designer',
+      name: 'Liam Davis',
+      role: 'Software Engineer',
       imageUrl: customer4,
       comment: 'Praesentium iure error aliquam voluptas ut libero. Commodi placeat sit iure nulla officiis. Ut ex sit repellat tempora. Qui est accusamus exercitationem natus ut voluptas. Officiis velit eos ducimus.',
       id: 4,
@@ -42,6 +44,20 @@ const cards = [
       comment: 'Praesentium iure error aliquam voluptas ut libero. Commodi placeat sit iure nulla officiis. Ut ex sit repellat tempora. Qui est accusamus exercitationem natus ut voluptas. Officiis velit eos ducimus.',
       id: 5,
     },
+    {
+      name: 'sabella Chen',
+      role: 'Marketing Manager',
+      imageUrl: cutomer6,
+      comment: 'Praesentium iure error aliquam voluptas ut libero. Commodi placeat sit iure nulla officiis. Ut ex sit repellat tempora. Qui est accusamus exercitationem natus ut voluptas. Officiis velit eos ducimus.',
+      id: 6,
+    },
+    {
+      name: 'Lila Anderson',
+      role: 'Teacher',
+      imageUrl: cutomer7,
+      comment: 'Praesentium iure error aliquam voluptas ut libero. Commodi placeat sit iure nulla officiis. Ut ex sit repellat tempora. Qui est accusamus exercitationem natus ut voluptas. Officiis velit eos ducimus.',
+      id: 7,
+    },
   ];
 
 const HorizontalScrollCarousel = () => {
@@ -50,7 +66,8 @@ const HorizontalScrollCarousel = () => {
       target: targetRef,
     });
   
-    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+    // const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-47%"]);
   
     return (
       <section ref={targetRef} className="relative h-[300vh]">

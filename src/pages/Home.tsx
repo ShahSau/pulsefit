@@ -116,18 +116,18 @@ const Home = () => {
 
                     {/* BENEFITS */}
                     <motion.div
-                    className="mt-5 items-center justify-between gap-8 md:flex"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    variants={container}
+                        className="mt-5 items-center justify-between gap-8 md:flex"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        variants={container}
                     >
                     {benefits.map((benefit: BenefitType) => (
                         <Benefit
-                        key={benefit.title}
-                        icon={benefit.icon}
-                        title={benefit.title}
-                        description={benefit.description}
+                            key={benefit.title}
+                            icon={benefit.icon}
+                            title={benefit.title}
+                            description={benefit.description}
                         />
                     ))}
                     </motion.div>
