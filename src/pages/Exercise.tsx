@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import ImageCard from '../components/ImageCard';
-import HomeSearch from "../components/HomeSearch";
 
 const exercise = [
     {
