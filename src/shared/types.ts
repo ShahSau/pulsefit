@@ -6,9 +6,8 @@
     description: string;
   }
   
-  export interface ClassType {
+  export interface OptionsType {
     name: string;
-    description?: string;
     image: string;
   }
   
