@@ -79,7 +79,7 @@ const Details = () => {
 
                     <div className="prose prose-sm mt-4 text-gray-500">
                     <ul role="list" className="list-disc">
-                        {exercise?.instructions.map((item) => (
+                        {exercise && exercise?.instructions.map((item) => (
                         <li key={item}>{item}</li>
                         ))}
                     </ul>

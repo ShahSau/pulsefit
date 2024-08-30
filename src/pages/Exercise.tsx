@@ -132,7 +132,7 @@ const Exercise = () => {
                         className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-10 py-2 text-white/50 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 placeholder-white/50"
                         onChange={(e) => setSearch(e.target.value)}
                     >
-                        {dropValues.map((value: string) => (
+                        {dropValues && dropValues.map((value: string) => (
                             <option key={value} value={value}>
                                 {value}
                             </option>
@@ -156,7 +156,7 @@ const Exercise = () => {
             viewport={{ once: true, amount: 0.5 }}
             variants={container}
         >
-            {exercise.map((exercise: ExerciseType) => (
+            {exercise && exercise.map((exercise: ExerciseType) => (
                 <ImageCard
                     key={exercise.id}
                     body={exercise.bodyPart}
