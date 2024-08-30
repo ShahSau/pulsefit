@@ -3,9 +3,9 @@ import TargetImage from '../assets/target.png';
 import EquipmentImage from '../assets/equipment.png';
 import IconCard from '../components/IconCard';
 import { useParams } from 'react-router-dom';
-import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ExerciseType from '../types/Exercise';
-import YoutubeData, {Content} from '../types/YoutubeData';
+import YoutubeData from '../types/YoutubeData';
 
 const Details = () => {
     const { id } = useParams<{id: string}>();
@@ -51,22 +51,22 @@ const Details = () => {
     , []);
     console.log(youtube)
   return (
-    <section className="bg-gray-100">
+    <section className="">
         {/* Details */}
         {!loading && <div className="pb-16 pt-6 sm:pb-24">
             <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
                 <div className="lg:col-span-5 lg:col-start-8">
-                    <h1 className="text-xl font-medium text-gray-500">{exercise.name}</h1>
+                    <h1 className="text-xl font-medium text-gray-500">{exercise?.name}</h1>
                 </div>
 
                 {/* Image gallery */}
                 <div className="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
                     <div
-                        key={exercise.id}
+                        key={exercise?.id}
                         className="min-h-96 min-w-96 relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8  sm:pt-48 lg:pt-80"
                     >
-                        <img alt="" src={exercise.gifUrl} className="absolute inset-0 -z-10 h-full w-full object-fill"/>
+                        <img alt="" src={exercise?.gifUrl} className="absolute inset-0 -z-10 h-full w-full object-fill"/>
                         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
                         <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
                     </div>
@@ -79,7 +79,7 @@ const Details = () => {
 
                     <div className="prose prose-sm mt-4 text-gray-500">
                     <ul role="list" className="list-disc">
-                        {exercise.instructions.map((item) => (
+                        {exercise?.instructions.map((item) => (
                         <li key={item}>{item}</li>
                         ))}
                     </ul>
@@ -90,9 +90,9 @@ const Details = () => {
                 <div className="mt-10">
 
                     <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                        <IconCard name="Body Part" bodyPart={exercise.bodyPart} img={BodyPartImage}/>
-                        <IconCard name="Target" bodyPart={exercise.target} img={TargetImage}/>
-                        <IconCard name="Equipment" bodyPart={exercise.equipment} img={EquipmentImage}/>
+                        <IconCard name="Body Part" bodyPart={exercise?.bodyPart || ""} img={BodyPartImage}/>
+                        <IconCard name="Target" bodyPart={exercise?.target || ""} img={TargetImage}/>
+                        <IconCard name="Equipment" bodyPart={exercise?.equipment || ""} img={EquipmentImage}/>
                     </dl>
                 </div>
                 </div>
@@ -104,7 +104,8 @@ const Details = () => {
         <h1 className="text-2xl mx-4 font-bold text-gray-500">{`Watch ${exercise?.name} exercise videos`}</h1>
         <div className='mt-5 items-center justify-between gap-8 m-4'>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 ">
-                {youtube.contents.map((content: { video: { videoId: string; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; description: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; channelName: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; viewCountText: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }; }) => (
+                {/*eslint-disable-next-line @typescript-eslint/no-explicit-any*/}
+                {Array.isArray(youtube) ? null : youtube.contents.map((content:any) => (
                     <div className='max-w-96 my-6 md:my-2 shadow-lg rounded-lg' key={content.video.videoId || "ddddd"}>
                         <iframe
                             className="w-full h-56  rounded-lg"
