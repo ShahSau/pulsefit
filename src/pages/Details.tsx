@@ -2,240 +2,58 @@ import BodyPartImage from '../assets/body-part.png';
 import TargetImage from '../assets/target.png';
 import EquipmentImage from '../assets/equipment.png';
 import IconCard from '../components/IconCard';
+import { useParams } from 'react-router-dom';
+import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useEffect, useState } from 'react';
+import ExerciseType from '../types/Exercise';
+import YoutubeData, {Content} from '../types/YoutubeData';
 
-const exercise={
-    "bodyPart":"waist", //
-    "equipment":"body weight",
-    "gifUrl":"https://v2.exercisedb.io/image/pJQQb3R3mKXQor", //
-    "id":"0002", // 
-    "name":"45° side bend",//
-    "target":"abs",//
-    "secondaryMuscles":["obliques"],
-    "instructions":["Stand with your feet shoulder-width apart and your arms extended straight down by your sides.","Keeping your back straight and your core engaged, slowly bend your torso to one side, lowering your hand towards your knee.","Pause for a moment at the bottom, then slowly return to the starting position.","Repeat on the other side.","Continue alternating sides for the desired number of repetitions."]
-}
-
-const youtube = {
-    "contents":
-    [
-        {
-            "video":
-            {
-                "channelId":"UCsRM0YB_dabtEPGPTKo-gcw",
-                "channelName":"Adele",
-                "description":"Follow Adele on: Facebook - https://www.facebook.com/Adele Twitter - https://twitter.com/Adele Instagram ...",
-                "lengthText":"5:08",
-                "publishedTimeText":"8 years ago",
-                "thumbnails":[
-                    {
-                        "height":202,
-                        "url":"https://i.ytimg.com/vi/DfG6VKnjrVw/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLB5n_7dEYsm7eUH3Ni1f8B3AjCMMg",
-                        "width":360
-                    },
-                    {
-                        "height":404,
-                        "url":"https://i.ytimg.com/vi/DfG6VKnjrVw/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAg-OxjBc39z4L-1iOFko8BPegWtQ",
-                        "width":720
-                    }
-                ],
-                "title":"Adele - Hello (Live at the NRJ Awards)",
-                "videoId":"DfG6VKnjrVw",
-                "viewCountText":"107,452,372 views"
-            }
-        },
-        {
-            "video":
-            {
-                "channelId":"UC7oBTs3SUrGBK8zE6h7Ruxw",
-                "channelName":"nowaklimak",
-                "lengthText":"4:43",
-                "publishedTimeText":"13 years ago",
-                "thumbnails":
-                [
-                    {
-                        "height":270,
-                        "url":"https://i.ytimg.com/vi/jNm_wrWquPs/hqdefault.jpg?sqp=-oaymwEjCOADEI4CSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLA75-9OQANvX6ePXQWiECL5hJcaXg",
-                        "width":480
-                    }
-                ],
-                "title":"Martin Solveig - Hello",
-                "videoId":"jNm_wrWquPs",
-                "viewCountText":"9,729,335 views"
-            }
-        },
-        {
-            "video":
-            {
-                "channelId":"UCbCmjCuTUZos6Inko4u57UQ",
-                "channelName":"Cocomelon - Nursery Rhymes",
-                "description":"JJ has met some new friends at preschool! Let's sing along and meet them too! Subscribe for new videos every week: ...",
-                "lengthText":"3:26",
-                "publishedTimeText":"5 years ago",
-                "thumbnails":
-                [
-                    {
-                        "height":202,
-                        "url":"https://i.ytimg.com/vi/fxVMqaViVaA/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDFj4iOeQUrsAn_hVHMGuM0F5AMoQ",
-                        "width":360
-                    }
-                    ,
-                    {
-                        "height":404,
-                        "url":"https://i.ytimg.com/vi/fxVMqaViVaA/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAXk8TPkxeOhWQ_AlCr50JTsuNutQ",
-                        "width":720
-                    }
-                ],
-                "title":"Hello Song | CoComelon Nursery Rhymes & Kids Songs","videoId":"fxVMqaViVaA","viewCountText":"367,256,645 views"
-            }
-        },
-        {
-            "video":
-            {
-                "channelId":"UCsRM0YB_dabtEPGPTKo-gcw",
-                "channelName":"Adele",
-                "description":"Follow Adele on: Facebook - https://www.facebook.com/Adele Twitter - https://twitter.com/Adele Instagram ...",
-                "lengthText":"5:08",
-                "publishedTimeText":"8 years ago",
-                "thumbnails":[
-                    {
-                        "height":202,
-                        "url":"https://i.ytimg.com/vi/DfG6VKnjrVw/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLB5n_7dEYsm7eUH3Ni1f8B3AjCMMg",
-                        "width":360
-                    },
-                    {
-                        "height":404,
-                        "url":"https://i.ytimg.com/vi/DfG6VKnjrVw/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAg-OxjBc39z4L-1iOFko8BPegWtQ",
-                        "width":720
-                    }
-                ],
-                "title":"Adele - Hello (Live at the NRJ Awards)",
-                "videoId":"DfG6VKnjrVw",
-                "viewCountText":"107,452,372 views"
-            }
-        },
-        {
-            "video":
-            {
-                "channelId":"UC7oBTs3SUrGBK8zE6h7Ruxw",
-                "channelName":"nowaklimak",
-                "lengthText":"4:43",
-                "publishedTimeText":"13 years ago",
-                "thumbnails":
-                [
-                    {
-                        "height":270,
-                        "url":"https://i.ytimg.com/vi/jNm_wrWquPs/hqdefault.jpg?sqp=-oaymwEjCOADEI4CSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLA75-9OQANvX6ePXQWiECL5hJcaXg",
-                        "width":480
-                    }
-                ],
-                "title":"Martin Solveig - Hello",
-                "videoId":"jNm_wrWquPs",
-                "viewCountText":"9,729,335 views"
-            }
-        },
-        {
-            "video":
-            {
-                "channelId":"UCbCmjCuTUZos6Inko4u57UQ",
-                "channelName":"Cocomelon - Nursery Rhymes",
-                "description":"JJ has met some new friends at preschool! Let's sing along and meet them too! Subscribe for new videos every week: ...",
-                "lengthText":"3:26",
-                "publishedTimeText":"5 years ago",
-                "thumbnails":
-                [
-                    {
-                        "height":202,
-                        "url":"https://i.ytimg.com/vi/fxVMqaViVaA/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDFj4iOeQUrsAn_hVHMGuM0F5AMoQ",
-                        "width":360
-                    }
-                    ,
-                    {
-                        "height":404,
-                        "url":"https://i.ytimg.com/vi/fxVMqaViVaA/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAXk8TPkxeOhWQ_AlCr50JTsuNutQ",
-                        "width":720
-                    }
-                ],
-                "title":"Hello Song | CoComelon Nursery Rhymes & Kids Songs","videoId":"fxVMqaViVaA","viewCountText":"367,256,645 views"
-            }
-        },
-        {
-            "video":
-            {
-                "channelId":"UCsRM0YB_dabtEPGPTKo-gcw",
-                "channelName":"Adele",
-                "description":"Follow Adele on: Facebook - https://www.facebook.com/Adele Twitter - https://twitter.com/Adele Instagram ...",
-                "lengthText":"5:08",
-                "publishedTimeText":"8 years ago",
-                "thumbnails":[
-                    {
-                        "height":202,
-                        "url":"https://i.ytimg.com/vi/DfG6VKnjrVw/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLB5n_7dEYsm7eUH3Ni1f8B3AjCMMg",
-                        "width":360
-                    },
-                    {
-                        "height":404,
-                        "url":"https://i.ytimg.com/vi/DfG6VKnjrVw/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAg-OxjBc39z4L-1iOFko8BPegWtQ",
-                        "width":720
-                    }
-                ],
-                "title":"Adele - Hello (Live at the NRJ Awards)",
-                "videoId":"DfG6VKnjrVw",
-                "viewCountText":"107,452,372 views"
-            }
-        },
-        {
-            "video":
-            {
-                "channelId":"UC7oBTs3SUrGBK8zE6h7Ruxw",
-                "channelName":"nowaklimak",
-                "lengthText":"4:43",
-                "publishedTimeText":"13 years ago",
-                "thumbnails":
-                [
-                    {
-                        "height":270,
-                        "url":"https://i.ytimg.com/vi/jNm_wrWquPs/hqdefault.jpg?sqp=-oaymwEjCOADEI4CSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLA75-9OQANvX6ePXQWiECL5hJcaXg",
-                        "width":480
-                    }
-                ],
-                "title":"Martin Solveig - Hello",
-                "videoId":"jNm_wrWquPs",
-                "viewCountText":"9,729,335 views"
-            }
-        },
-        {
-            "video":
-            {
-                "channelId":"UCbCmjCuTUZos6Inko4u57UQ",
-                "channelName":"Cocomelon - Nursery Rhymes",
-                "description":"JJ has met some new friends at preschool! Let's sing along and meet them too! Subscribe for new videos every week: ...",
-                "lengthText":"3:26",
-                "publishedTimeText":"5 years ago",
-                "thumbnails":
-                [
-                    {
-                        "height":202,
-                        "url":"https://i.ytimg.com/vi/fxVMqaViVaA/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDFj4iOeQUrsAn_hVHMGuM0F5AMoQ",
-                        "width":360
-                    }
-                    ,
-                    {
-                        "height":404,
-                        "url":"https://i.ytimg.com/vi/fxVMqaViVaA/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAXk8TPkxeOhWQ_AlCr50JTsuNutQ",
-                        "width":720
-                    }
-                ],
-                "title":"Hello Song | CoComelon Nursery Rhymes & Kids Songs","videoId":"fxVMqaViVaA","viewCountText":"367,256,645 views"
-            }
-        }
-    ],
-    estimatedResults:"4106802157",
-    next:"Ep4DEgVoZWxsbxqUA1NDaUNBUXRFWmtjMlZrdHVhbkpXZDRJQkMycE9iVjkzY2xkeGRWQnpnZ0VMWm5oV1RYRmhWbWxXWVVHQ0FRdHdjVVJGZDFCcE4zWjRaNElCQzFOWFMxSmtkVU5sTlRsSmdnRUxWRVYwV2t0dFRqWlpaV2VDQVF0TlRXdFJSM2hJWTJkdFNZSUJDM2RuYmpRNVp6YzJOMTh3Z2dFTFFYaDRPVWxOWkV3MGFtT0NBUXMyTUdkUFNsbGpPVE5LT0lJQkN6TXllWE55UWtNMlFqWnJnZ0VMVDB0clRGWXhla1U0VFRDQ0FRdHlSRmQxY1hKS1FYbEhkNElCQzFsUU5VUkVkeTFJV0RkRmdnRUxWREYwYkRZMmRISllWRkdDQVFzMVR6WkxSSFZMU205Q01JSUJDM0JxY0hwd1FVaHZRVlpuZ2dFTFRtaGZhVk5JYzFaelVFR0NBUXRsU1VocFdIUm9MV0UzWjRJQkMwbHlZa1o1WkhSTVJpMVpzZ0VHQ2dRSUZoQUM2Z0VFQ0FJUU1nJTNEJTNEGIHg6BgiC3NlYXJjaC1mZWVk"
-}
 const Details = () => {
+    const { id } = useParams<{id: string}>();
+    const [exercise, setExercise] = useState<ExerciseType | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [youtube, setYoutube] = useState<YoutubeData | [] >([]);
+    const [loadingYoutube, setLoadingYoutube] = useState(true);
+
+    useEffect(() => {
+        fetch(`https://exercisedb.p.rapidapi.com/exercises/exercise/${id}`, {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': '67f89913b9mshfd8a90c757830bep16156ajsn13a3c83bd33f',
+                'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
+              },
+        })
+            .then(response => response.json())
+            .then(data => {
+                setExercise(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+
+        fetch(`https://youtube-search-and-download.p.rapidapi.com/search?query=${exercise?.name} exercise`, {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': '67f89913b9mshfd8a90c757830bep16156ajsn13a3c83bd33f',
+                'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com'
+              },
+        })
+            .then(response => response.json())
+            .then(data => {
+                setYoutube(data);
+                setLoadingYoutube(false);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+        
+    }
+    , []);
+    console.log(youtube)
   return (
     <section className="bg-gray-100">
         {/* Details */}
-        <div className="pb-16 pt-6 sm:pb-24">
+        {!loading && <div className="pb-16 pt-6 sm:pb-24">
             <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
                 <div className="lg:col-span-5 lg:col-start-8">
@@ -280,16 +98,17 @@ const Details = () => {
                 </div>
             </div>
             </div>
-        </div>
+        </div>}
         {/* Youtube */}
-        <h1 className="text-2xl mx-4 font-bold text-gray-500">{`Watch ${exercise.name} exercise videos`}</h1>
+        {!loadingYoutube && <>
+        <h1 className="text-2xl mx-4 font-bold text-gray-500">{`Watch ${exercise?.name} exercise videos`}</h1>
         <div className='mt-5 items-center justify-between gap-8 m-4'>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 ">
-                {youtube.contents.map((content) => (
-                    <div className='max-w-96 my-6 md:my-2 shadow-lg rounded-lg'>
+                {youtube.contents.map((content: { video: { videoId: string; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; description: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; channelName: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; viewCountText: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }; }) => (
+                    <div className='max-w-96 my-6 md:my-2 shadow-lg rounded-lg' key={content.video.videoId || "ddddd"}>
                         <iframe
                             className="w-full h-56  rounded-lg"
-                            src={`https://www.youtube.com/embed/`+content.video.videoId}
+                            src={`https://www.youtube.com/embed/`+content.video.videoId || ''}
                             title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         />
@@ -303,6 +122,10 @@ const Details = () => {
                 ))}
             </div>
         </div>
+        </>}
+        {(loading || loadingYoutube)&& <div className="flex justify-center items-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+            </div>}
     </section>
 
   )
