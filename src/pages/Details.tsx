@@ -18,7 +18,7 @@ const Details = () => {
         fetch(`https://exercisedb.p.rapidapi.com/exercises/exercise/${id}`, {
             method: 'GET',
             headers: {
-                'x-rapidapi-key': '67f89913b9mshfd8a90c757830bep16156ajsn13a3c83bd33f',
+                'x-rapidapi-key': import.meta.env.VITE_EXERCISE_KEY as string,
                 'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
               },
         })
@@ -34,7 +34,7 @@ const Details = () => {
         fetch(`https://youtube-search-and-download.p.rapidapi.com/search?query=${exercise?.name} exercise`, {
             method: 'GET',
             headers: {
-                'x-rapidapi-key': '67f89913b9mshfd8a90c757830bep16156ajsn13a3c83bd33f',
+                'x-rapidapi-key': import.meta.env.VITE_YOUTUBE_KEY as string,
                 'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com'
               },
         })

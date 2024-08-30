@@ -29,7 +29,7 @@ const Exercise = () => {
         fetch('https://exercisedb.p.rapidapi.com/exercises?limit=10&offset=0', {
             method: 'GET',
             headers: {
-                 'x-rapidapi-key': '67f89913b9mshfd8a90c757830bep16156ajsn13a3c83bd33f',
+                 'x-rapidapi-key': import.meta.env.VITE_EXERCISE_KEY as string,
     'x-rapidapi-host': 'exercisedb.p.rapidapi.com'
             },
         })
