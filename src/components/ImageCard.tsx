@@ -24,7 +24,7 @@ const ImageCard = ({  body, imageUrl, secondaryMuscles, id, name, target }: Prop
           {/* image */}
           <div
             key={id}
-            className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8  sm:pt-48 lg:pt-80"
+            className="min-h-96 min-w-96 md:min-h-full md:min-w-full relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8  sm:pt-48 lg:pt-80"
           >
             <img alt="" src={imageUrl} className="absolute inset-0 -z-10 h-full w-full object-fill"/>
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />

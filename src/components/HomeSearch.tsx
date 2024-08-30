@@ -12,7 +12,7 @@ import image10 from "../assets/image10.jpg";
 import { motion } from "framer-motion";
 import HText from "../shared/HText";
 import Options from "./Options";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 const options: Array<OptionsType> = [
     {
@@ -58,6 +58,11 @@ const options: Array<OptionsType> = [
   ];
 
 const HomeSearch = () => {
+    const navigate = useNavigate();
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        navigate("/exercise");
+    };
   return (
     <section id="options" className="w-full py-40">
         <motion.div
@@ -77,7 +82,7 @@ const HomeSearch = () => {
                 <div className="md:w-3/5">
                     <HText>Exercises</HText>
                     <div className="py-5  md:ml-56 lg:ml-96">
-                        <form className="mx-auto mt-10 flex max-w-md gap-x-4">
+                        <form className="mx-auto mt-10 flex max-w-md gap-x-4" onSubmit={handleSubmit}>
                             <label htmlFor="email-address" className="sr-only">
                                 Search Exercise
                             </label>
@@ -98,7 +103,7 @@ const HomeSearch = () => {
                     </div>
                 </div>
             </motion.div>
-            <Link to="/exercise?">
+            <Link to="/exercise">
                 <div className="mt-10 h-[353px] w-full overflow-x-auto overflow-y-hidden">
                     <ul className="w-[2800px] whitespace-nowrap">
                         {options.map((item: OptionsType, index) => (

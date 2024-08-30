@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NoPage from "./pages/NoPage";
 import Home from "./pages/Home";
 import Exercise from "./pages/Exercise";
+import Details from "./pages/Details";
 
 const App=()=> {
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
@@ -26,7 +27,7 @@ const App=()=> {
         <Route path="/" element={<Layout isTopOfPage={isTopOfPage} />}>
           <Route index element={<Home />} />
           <Route path="exercise" element={<Exercise />} />
-          <Route path="exercise/:id" element={<div className="bg-green-800">exercise id</div>} />
+          <Route path="exercise/:id" element={<Details />} />
           <Route path="*" element={<NoPage />} /> 
         </Route>
       </Routes>
