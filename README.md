@@ -11,7 +11,7 @@
 	<img src="https://img.shields.io/github/languages/count/ShahSau/pulsefit?style=default&color=0080ff" alt="repo-language-count">
 </p>
 <p align="center">
-		<em>Developed with the software and tools below.</em>
+	<em>Developed with the software and tools below.</em>
 </p>
 <p align="center">
      <img src="https://img.shields.io/badge/JavaScript-323330?style=flat&logo=javascript&logoColor=F7DF1E" alt="JS">
@@ -21,8 +21,7 @@
      <img src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=flat&logo=TypeScript&logoColor=white" alt="TypeScript">
      <img src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat&logo=ESLint&logoColor=white" alt="ESLint">
      <img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
-     <img src="https://img.shields.io/badge/Vite-646CFF.svg?style=flat&logo=Vite&logoColor=white" alt="Vite">
-      
+     <img src="https://img.shields.io/badge/Vite-646CFF.svg?style=flat&logo=Vite&logoColor=white" alt="Vite"> 
 </p>
 <hr>
 <br>
